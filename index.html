@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Love Calculator ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #ffe6e6;
+        }
+        #game-box {
+            border: 2px solid #ff4d4d;
+            padding: 30px;
+            display: inline-block;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #ff4d4d;
+        }
+        input {
+            padding: 8px;
+            width: 80%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+        .loading {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-box">
+        <h2>❤️ True Love Calculator ❤️</h2>
+        <p>Enter your name and your crush's name:</p>
+        <input type="text" id="yourName" placeholder="Your Name">
+        <input type="text" id="crushName" placeholder="Crush's Name">
+        <button id="calculateBtn" onclick="calculateLove()">Calculate Love ❤️</button>
+        <p id="loading" class="hidden loading">Calculating love...</p>
+        <p id="result" class="hidden"></p>
+    </div>
+
+    <script>
+        let loveCalculated = false; // Prevents multiple calculations
+
+        function calculateLove() {
+            if (loveCalculated) {
+                // If the user already calculated once, show a funny message
+                document.getElementById("result").innerText = getBlockedMessage();
+                document.getElementById("result").classList.remove("hidden");
+                return;
+            }
+
+            document.getElementById("loading").classList.remove("hidden");
+            document.getElementById("result").classList.add("hidden");
+
+            setTimeout(() => {
+                document.getElementById("loading").classList.add("hidden");
+
+                let loveResults = [
+                    "100% - Meant to be! Wedding next week?",
+                    "2% - Friendzone level: MAX",
+                    "50% - You have a chance... but only if you can cook.",
+                    "69% - Nice. But not nice enough.",
+                    "404% - Love Not Found. Try again later.",
+                    "85% - Solid couple potential! But do they even know you exist?",
+                    "10% - Might work… if you move to another universe.",
+                    "0% - Oh no… let's not talk about this."
+                ];
+                
+                let randomResult = loveResults[Math.floor(Math.random() * loveResults.length)];
+                document.getElementById("result").innerText = randomResult;
+                document.getElementById("result").classList.remove("hidden");
+
+                loveCalculated = true; // Prevent further calculations
+            }, 2000);
+        }
+
+        function getBlockedMessage() {
+            let funnyMessages = [
+                "⚠️ Love Calculator Overloaded! Stop being so indecisive. 😆",
+                "🚫 You only get one chance! Love isn't a game... or is it? 🤔",
+                "🛑 Nice try! But love doesn’t change every 5 seconds. ❤️",
+                "💔 Love servers crashed. Please take your L and move on. 😂",
+                "❌ System error: Too many love calculations! Try again never. 😜"
+            ];
+            return funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
+        }
+    </script>
+</body>
+</html>
